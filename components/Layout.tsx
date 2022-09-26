@@ -15,12 +15,12 @@ import AuthModal from "./AuthModal";
 
 const menuItems = [
   {
-    label: "List a new home",
+    label: "Ring Ring Ring",
     icon: PlusIcon,
     href: "/list",
   },
   {
-    label: "My homes",
+    label: "My Banannas",
     icon: HomeIcon,
     href: "/homes",
   },
@@ -55,7 +55,7 @@ const Layout = ({ children = null }: { children: any }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen flex flex-col bg-gray-100">
+      <div className="min-h-screen flex flex-col bg-gray-50">
         <header className="h-16 w-full">
           <div className="h-full container mx-auto">
             <div className="h-full px-4 flex justify-between items-center space-x-4">
@@ -114,7 +114,6 @@ const Layout = ({ children = null }: { children: any }) => {
                             </span>
                           </div>
                         </div>
-
                         <div className="py-2">
                           {menuItems.map(
                             ({ label, href, onClick, icon: Icon }) => (
