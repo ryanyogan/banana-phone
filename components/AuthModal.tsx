@@ -4,7 +4,13 @@ import Image from "next/image";
 import { Fragment, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
-const AuthModal = ({ show = false, onClose = () => null }) => {
+const AuthModal = ({
+  show = false,
+  onClose,
+}: {
+  show: boolean;
+  onClose: any;
+}) => {
   const [disabled, setDisabled] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
 

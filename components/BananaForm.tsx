@@ -17,6 +17,11 @@ const ListingForm = ({
   redirectPath = "",
   buttonText = "Submit",
   onSubmit,
+}: {
+  initialValues: any;
+  redirectPath: any;
+  buttonText: any;
+  onSubmit: any;
 }) => {
   const router = useRouter();
 
@@ -41,7 +46,7 @@ const ListingForm = ({
     }
   };
 
-  const handleOnSubmit = async (values = null) => {
+  const handleOnSubmit = async (values: any) => {
     let toastId;
     try {
       setDisabled(true);
