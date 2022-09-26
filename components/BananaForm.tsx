@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -15,15 +16,29 @@ const ListingForm = ({
   initialValues = null,
   redirectPath = "",
   buttonText = "Submit",
-  onSubmit = () => null,
+  onSubmit,
 }) => {
   const router = useRouter();
 
   const [disabled, setDisabled] = useState(false);
-  const [imageUrl, setImageUrl] = useState(initialValues?.image ?? "");
+  const [imageUrl, setImageUrl] = useState("");
 
-  const upload = async (image) => {
-    // TODO: Upload image to remote storage
+  const upload = async (image: any) => {
+    if (!image) return;
+
+    let toastId;
+    try {
+      setDisabled(true);
+      toastId = toast.loading("Uploading...");
+      const { data } = await axios.post("/api/image-upload", { image });
+      setImageUrl(data?.url);
+      toast.success("Successfully uploaded", { id: toastId });
+    } catch (e) {
+      toast.error("Unable to upload", { id: toastId });
+      setImageUrl("");
+    } finally {
+      setDisabled(false);
+    }
   };
 
   const handleOnSubmit = async (values = null) => {

@@ -1,5 +1,8 @@
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import {
+  ChevronDownIcon,
+  DevicePhoneMobileIcon,
+} from "@heroicons/react/20/solid";
 import {
   HeartIcon,
   HomeIcon,
@@ -67,6 +70,9 @@ const Layout = ({ children = null }: { children: any }) => {
                 </a>
               </Link>
               <div className="flex items-center space-x-4">
+                <Link href="/create">
+                  <DevicePhoneMobileIcon className="h-5 w-5 cursor-pointer hover:scale-110" />
+                </Link>
                 {isLoadingUser ? (
                   <div className="h-8 w-[75px] bg-gray-200 animate-pulse rounded-md" />
                 ) : user ? (
@@ -150,7 +156,7 @@ const Layout = ({ children = null }: { children: any }) => {
                   <button
                     type="button"
                     onClick={openModal}
-                    className="ml-4 px-4 py-1 rounded-md bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-opacity-50 text-white transition"
+                    className="text-sm text-gray-800"
                   >
                     Log in
                   </button>
