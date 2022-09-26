@@ -7,5 +7,7 @@ module.exports = {
       "ytmkgjmqufkbwssfnahf.supabase.in",
     ],
   },
-  ignoreBuildErrors: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
