@@ -8,6 +8,14 @@ const supabase = createClient(
   process.env.SUPABASE_KEY as string
 );
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "10mb",
+    },
+  },
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
