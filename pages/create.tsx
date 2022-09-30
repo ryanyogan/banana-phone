@@ -14,7 +14,7 @@ const Create = () => {
         </p>
         <div className="mt-8">
           <ListingForm
-            buttonText="Ring, Ring, Ring"
+            buttonText="Share the bannana"
             redirectPath="/"
             onSubmit={addRing}
           />
