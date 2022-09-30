@@ -5,6 +5,7 @@ module.exports = {
     domains: [
       "qglqiqezlirvijoikugc.supabase.in",
       "ytmkgjmqufkbwssfnahf.supabase.in",
+      "api.cloudinary.com",
     ],
   },
   typescript: {

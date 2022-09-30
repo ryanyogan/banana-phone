@@ -1,5 +1,4 @@
 import { PrismaClient, Ring } from "@prisma/client";
-import cn from "classnames";
 import Layout from "components/Layout";
 import Image from "next/image";
 import { useState } from "react";
@@ -28,6 +27,10 @@ export default function Home({ rings }: { rings: Ring[] }) {
   );
 }
 
+function cn(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
 function BlurImage({ ring }: { ring: Ring }) {
   const [isLoading, setLoading] = useState(true);
 
@@ -48,10 +51,8 @@ function BlurImage({ ring }: { ring: Ring }) {
           onLoadingComplete={() => setLoading(false)}
         />
       </div>
-      <h3 className="mt-4 text-sm text-gray-700">{ring.title}</h3>
-      <p className="mt-1 text-lg font-medium text-gray-900">
-        {ring.description}
-      </p>
+      <h3 className="mt-4 text-gray-900">{ring.title}</h3>
+      <p className="mt-1 text-sm text-gray-700">{ring.description}</p>
     </div>
   );
 }

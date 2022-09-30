@@ -8,17 +8,24 @@ const ImageUpload = ({
   label = "Image",
   initialImage,
   objectFit = "cover",
-  accept = ".png, .jpg, .jpeg, .gif",
+  accept = "image/jpeg,image/png,image/gif,image/jpg",
   sizeLimit = 10 * 1024 * 1024, // 10MB
   onChangePicture,
+}: {
+  label?: string;
+  initialImage: any;
+  objectFit?: any;
+  accept?: string;
+  sizeLimit?: number;
+  onChangePicture: (reader: any) => void;
 }) => {
-  const pictureRef = useRef();
+  const pictureRef = useRef<any>();
 
   const [image, setImage] = useState(initialImage);
   const [updatingPicture, setUpdatingPicture] = useState(false);
-  const [pictureError, setPictureError] = useState(null);
+  const [pictureError, setPictureError] = useState<string | null>(null);
 
-  const handleOnChangePicture = (e) => {
+  const handleOnChangePicture = (e: any) => {
     const file = e.target.files[0];
     const reader = new FileReader();
 
@@ -28,9 +35,14 @@ const ImageUpload = ({
       "load",
       async function () {
         try {
+          // const formData = new FormData();
+          // formData.append("file", file);
+          // formData.append("upload_preset", "banana-phone");
+
           setImage({ src: reader.result, alt: fileName });
           if (typeof onChangePicture === "function") {
             await onChangePicture(reader.result);
+            // await onChangePicture(formData);
           }
         } catch (err) {
           toast.error("Unable to update image");
